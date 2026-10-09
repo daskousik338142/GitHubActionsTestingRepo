@@ -23,3 +23,17 @@ jobs:
           echo "This is the first of the multi step process"
           echo "This is the final step"
           sleep 20
+  job3:
+    name: "Checking job dependency"
+    needs: job2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job with single dependency
+        run: sleep 10
+  job4:
+    name: "Checking job dependency - multiple"
+    needs: [job1, job2, job3]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job with multiple dependency
+        run: sleep 10        
