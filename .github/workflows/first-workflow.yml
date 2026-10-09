@@ -9,4 +9,4 @@ jobs:
       - name: Running single command
         run: echo "First git actions workflow"
       - name: Checking OS release of runner
-        run: cat /etc/os release
+        run: cat /etc/os-release
