@@ -10,3 +10,16 @@ jobs:
         run: echo "First git actions workflow"
       - name: Checking OS release of runner
         run: cat /etc/os-release
+      - name: Calling sleep
+        run: sleep 20
+  job2:
+    name: "Second job"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking the host name of the runner
+        run: hostname
+      - name: Running multiple commands
+        run: |
+          echo "This is the first of the multi step process"
+          echo "This is the final step"
+          sleep 20
