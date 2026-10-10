@@ -1,5 +1,6 @@
 name: "My Second Workflow Example"
 on:
+  push:
   workflow_dispatch: 
 
 jobs:
@@ -15,13 +16,13 @@ jobs:
         uses: actions/checkout@v6.1.0  
       - name: Post checkout verification
         run: |
-          echo pwd > my-artifact.txt
+          echo 'pwd' > my-artifact.txt
           ls -ltr
           hostname
       - name: Upload a single artifact
         uses: actions/upload-artifact@v7.0.2
         with:
-          name: singgle_file
+          name: single_artifact
           path: ./my-artifact.txt
         
           
