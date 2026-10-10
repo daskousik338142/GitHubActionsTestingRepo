@@ -61,7 +61,23 @@ jobs:
       - name: Check after artifactory download
         run: |
           pwd
-          ls -ltr          
+          ls -ltr
+  testing_download_feature_directory:
+    needs: testing_commands_checkout_code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check directory before download
+        run: |
+          pwd
+          ls -ltr
+      - name: Download the directory
+        uses: actions/download-artifact@v8.0.2
+        with:
+          name: directory_upload
+      - name: Check after directory download
+        run: |
+          pwd
+          ls -ltr             
     
   
         
