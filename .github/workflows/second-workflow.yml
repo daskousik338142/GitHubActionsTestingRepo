@@ -47,6 +47,7 @@ jobs:
             !**/hostname.txt
 
   testing_download_feature:
+    needs: testing_commands_checkout_code
     runs-on: ubuntu-latest
     steps:
       - name: Check directory before download
