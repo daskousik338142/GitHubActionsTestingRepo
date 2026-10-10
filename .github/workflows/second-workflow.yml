@@ -1,0 +1,23 @@
+name: "My Second Workflow Example"
+on:
+  workflow_dispatch: 
+
+jobs:
+  testing_commands_checkout_code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run some commands
+        run: |
+          pwd
+          ls -ltr
+          hostname
+      - name: Checkout code
+        uses: actions/checkout@v6.1.0  
+      - name: Post checkout verification
+        run: |
+          pwd
+          ls -ltr
+          hostname          
+        
+          
+      
