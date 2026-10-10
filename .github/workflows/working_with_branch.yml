@@ -1,4 +1,44 @@
 name: working-with-branch
 on:
   push:
-    
+    branches: 
+      - 'branch-*'
+
+jobs:
+  testing-push-to-branch-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run some commands
+        run: |
+          pwd
+          ls -ltr
+          hostname
+      - name: Checkout code
+        uses: actions/checkout@v6.1.0  
+      - name: Post checkout verification
+        run: |
+          mkdir artifacts
+          echo 'pwd' >> my-artifact.txt
+          echo 'ls -ltr' >> artifacts/list.txt
+          echo 'hostname' >> artifacts/hostname.txt
+      - name: Upload a single artifact
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: single_artifact
+          path: ./my-artifact.txt
+  testing_download_feature:
+    needs: testing-push-to-branch-request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check directory before download
+        run: |
+          pwd
+          ls -ltr
+      - name: Download the file
+        uses: actions/download-artifact@v8.0.2
+        with:
+          name: single_artifact
+      - name: Check after artifactory download
+        run: |
+          pwd
+          ls -ltr
