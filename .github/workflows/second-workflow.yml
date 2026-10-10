@@ -45,6 +45,24 @@ jobs:
             ./my-artifact.txt
             artifacts/
             !**/hostname.txt
+
+  testing_download_feature:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check directory before download
+        run: |
+          pwd
+          ls -ltr
+      - name: Download the file
+        uses: actions/download-artifact@v8.0.2
+        with:
+          name: single_artifact
+      - name: Check after artifactory download
+        run: |
+          pwd
+          ls -ltr          
+    
+  
         
           
       
