@@ -1,15 +1,16 @@
 name: working-with-env-vars
-on: push:
+on: 
+  push:
 
 env:
-  APP_NAME="Test App"
-  APP_USER=kousikdas
-  APP_PORT=80
+  APP_NAME: "Test App"
+  APP_USER: kousikdas
+  APP_PORT: 80
 jobs:
   refer-and-print-env-vars:
     runs-on: ubuntu-latest
     steps:
-      name: "Refer and Print"
-      run: |
-        - echo "Printing the variables"
+      - name: "Refer and Print"
+        run: |
+          echo "Printing the variables"
           echo $APP_NAME, $APP_USER, $APP_PORT
