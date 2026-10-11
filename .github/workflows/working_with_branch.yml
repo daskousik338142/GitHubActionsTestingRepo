@@ -1,4 +1,12 @@
 name: working-with-branch
 on:
-  push:
+  workflow_dispatch: 
+
+jobs:
+  working-with-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Working with branch
+        run: 
+          echo "working with the branch"
     
